@@ -1,0 +1,136 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage[portuguese,brazil]{babel}
+%\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
+%\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{indentfirst}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{pdflscape}
+\usepackage[brazil]{babel}
+\usepackage{setspace}
+\usepackage{fancybox}
+
+\usepackage{url}
+\usepackage{rotating}
+
+\usepackage{enumerate} %para fazer os topicos em itens
+
+
+
+% fonts
+%\usepackage{palatino}
+%\usepackage{courier}
+
+
+% math
+\usepackage{amsmath, amsthm, amssymb}
+%\usepackage{latexsym}
+%\usepackage{enumerate}
+%\usepackage{float}
+%\usepackage{floatflt}
+%\usepackage{array}
+%\usepackage{longtable}
+\newtheorem{teor}{Teorema}[chapter]
+%\newtheorem{coro}[teor]{Corol�rio}
+%\newtheorem{prop}[teor]{Proposi��o}
+%\newtheorem{lema}[teor]{Lema}
+%\newtheorem{conj}[teor]{Conjectura}
+%\newtheorem{fato}[teor]{Fato}
+%\newtheorem{defi}[teor]{Defini��o}
+\newtheorem{exem}[teor]{Exemplo}
+
+
+% probability
+%\usepackage{xspace} 
+%\newcommand{\Pro}{\xspace\protect{\ensuremath{\textup{Pr}}}\xspace}
+%\newcommand{\Esp}{\xspace\protect{\ensuremath{\textup{E}}}\xspace}
+
+
+
+
+
+% algorithms
+%\usepackage[ruled]{algorithm}
+%\usepackage[noend]{algorithmic}
+
+
+% hiperlinks
+\usepackage[pdfpagemode=UseOutlines,
+colorlinks=true,
+breaklinks=true,
+hyperindex,
+linkcolor=black,
+anchorcolor=black,
+citecolor=black,
+filecolor=black,
+menucolor=black,
+urlcolor=black,
+bookmarks=true,
+bookmarksopen=true,
+pdfpagelayout=SinglePage,
+pdfpagetransition=Dissolve,
+plainpages=false,
+hypertexnames=false]
+{hyperref}
+
+\graphicspath{{./images/}}
+
+
+% format
+\setlength{\parskip}{.5cm}
+\setlength{\textwidth}{15cm}
+\setlength{\textheight}{23 cm}
+\setlength{\topmargin}{0cm} 
+\setlength{\oddsidemargin}{0.5cm}
+\setlength{\evensidemargin}{0.5cm} 
+%%\parindent 0pt
+
+% format
+\setlength{\parindent}{1cm}
+%% \setlength{\parskip}{.5cm}
+%% \setlength{\textwidth}{16cm}
+%% \setlength{\textheight}{23 cm}
+%% \setlength{\topmargin}{0cm} 
+%% \setlength{\oddsidemargin}{0.5cm}
+%% \setlength{\evensidemargin}{0.5cm} 
+
+
+\begin{document}
+\sloppy
+\onehalfspacing
+
+\pagestyle{empty}
+\input{0-capa.tex}
+
+\pagenumbering{roman}
+%\setcounter{page}{1}
+
+\newpage
+\tableofcontents
+\newpage
+
+\pagestyle{fancy}
+\pagenumbering{arabic}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+
+\setcounter{page}{1}
+
+\input{1-introducao.tex}
+\input{1-objetivos.tex}
+\input{2-TrabRelFundamentos.tex}
+\input{3-metodologia.tex}
+\input{9-cronograma}
+
+%\input{corpo.tex}
+
+% \nocite{*}
+\bibliographystyle{ieeetr}
+\bibliography{referencias}
+\addcontentsline{toc}{chapter}{\protect\numberline{}Referências Bibliográficas}
+%\addcontentsline{toc}{chapter}{\protect\numberline{}Referências Bibliográficas}
+%\input{apendice.tex}
+
+\end{document}
