@@ -4,51 +4,49 @@
 \section{Introdução}
 \label{Intro-Metodologia}
 
-Neste capitulo serão descritos em um nivel mais detalhado os objetivos especificos e será apresentada a metodologia adotada para conclusão do projeto apontando as principais tecnologias que serão usadas como base para o desenvolvimento.
+Neste capítulo serão descritos em um nível mais detalhado os objetivos específicos e será apresentada a metodologia adotada para conclusão do projeto apontando as principais tecnologias que serão usadas como base para o desenvolvimento.
 
-A aplicação que será desenvolvida terá um lado servidor que será responsável por gerir o banco de dados de documentos e prover páginas dinâmicas em resposta a consulta dos usuários e um lado cliente responsável pela execução em um navegador web e implementa a interface gráfica da aplicação.
+A aplicação que será desenvolvida terá um lado servidor que será responsável por gerir o banco de dados de documentos e prover páginas dinâmicas em resposta a consulta dos usuários e um lado cliente responsável pela execução em um navegador Web e implementa a interface gráfica da aplicação.
 
 %fazer uma breve descrição do que sera apresentado no capitulo 
 
 
 \section{Aplicação Lado Servidor}
 
-O lado servidor irá gerênciar a base de dados para uma determinada coleção de documentos, permitindo a adição, remoção e consulta. Quando um documento é adicionado ao banco, o programa computa a relevância do documento, bem como recalcula a projeção de todos os documentos da base de dados. Quando um documento é removido a relevância e a projeção de todos os documentos é recalculada. Além da gerência do banco de dados o lado servidor gera conteúdo dinâmico em resposta a solicitações HTTP feitas pelo lado cliente.
+O lado servidor irá gerênciar a base de dados para uma determinada coleção de documentos, permitindo a adição, remoção e consulta. Quando um documento é adicionado ao banco de dados, o programa computa a relevância do documento, bem como recalcula a projeção de todos os documentos da base de dados. Quando um documento é removido a relevância e a projeção de todos os documentos é recalculada. Além da gerência do banco de dados o lado servidor gera conteúdo dinâmico em resposta a solicitações HTTP feitas pelo lado cliente.
 
-O lado servidor será desenvolvido em Java integrado com JSF (JavaServer Faces) e o sistema de banco de dados (SGBD)  PostGresSQL.
+O lado servidor será desenvolvido em Java integrado com JSF (JavaServer Faces) e o sistema de gerenciamento de banco de dados (SGBD)  PostGresSQL.
 
-A para a base de dados será usado o PostgreSQL que é um sistema de gerenciamento de banco de dados objeto-relacional (ORDBMS), robusto, estável, eficiente, software livre e de código aberto \cite{obe2014postgresql} \cite{posgresql_documentation}. Ele pode ser executado em todos os principais sistemas operacionais, incluindo Linux, UNIX (AIX, BSD, HP-UX, SGI IRIX, Mac OS X, Solaris, Tru64) e Windows. É totalmente compatível com ACID (Atomicidade, Consistência, Isolamento e Durabilidade), tem suporte completo para chaves estrangeiras, \textit{joins}, \textit{views}, \textit{triggers} e tem procedimentos armazenados em várias línguas \cite{posgresql_documentation}\cite{obe2014postgresql}.  Ele pode lidar com cargas de trabalho que vão desde pequenas aplicações em uma única máquina até grandes aplicativos para a Internet com muitos usuários simultâneos.
- Ele inclui a maioria do SQL: 2008 tipos de dados, incluindo INTEGER, NUMERIC, BOOLEAN, CHAR, VARCHAR, DATE, INTERVALO e TIMESTAMP. Ele também suporta o armazenamento de grandes objetos binários, incluindo imagens, sons ou vídeo. Tem interfaces de programação nativas para C / C ++, Java, .Net, Perl, Python, Ruby, Tcl, ODBC, entre outros, e tem uma documentação excepcional \cite{obe2014postgresql}.
+O PostgreSQL que é um sistema de gerenciamento de banco de dados objeto-relacional (ORDBMS), robusto, estável, eficiente, software livre e de código aberto \cite{obe2014postgresql} \cite{posgresql_documentation}. Ele pode ser executado em todos os principais sistemas operacionais, incluindo Linux, UNIX (AIX, BSD, HP-UX, SGI IRIX, Mac OS X, Solaris, Tru64) e Windows. É totalmente compatível com ACID (Atomicidade, Consistência, Isolamento e Durabilidade), tem suporte completo para chaves estrangeiras, \textit{joins}, \textit{views}, \textit{triggers} e tem procedimentos armazenados em várias línguas \cite{posgresql_documentation}\cite{obe2014postgresql}.  Ele pode lidar com cargas de trabalho que vão desde pequenas aplicações em uma única máquina até grandes aplicativos para a Internet com muitos usuários simultâneos.
+ Ele inclui a maioria dos tipos de dados SQL: 2008 incluindo INTEGER, NUMERIC, BOOLEAN, CHAR, VARCHAR, DATE, INTERVALO e TIMESTAMP. Também suporta o armazenamento de grandes objetos binários, incluindo imagens, sons ou vídeos. Tem interfaces de programação nativas para C / C ++, Java, .Net, Perl, Python, Ruby, Tcl, ODBC, entre outros, e tem uma documentação considerada excepcional \cite{obe2014postgresql}.
 
 
-\subsection{Aplicação Lado Cliente}
+\section{Aplicação Lado Cliente}
 
 O lado cliente executa em um navegador web e implementa a interface gráfica da aplicação. Através da interface o usuário poderá realizar consultas, as quais são enviadas ao servidor, que retorna um conteúdo gerado dinamicamente e é transformado em uma visualização no lado cliente.
-Nesta visualização o usuário pode ver os documentos mais relevantes resultantes da consulta, bem como um mapa que identifica regiões do espaço visual contendo mais documentos que podem ser explorados.
+Nesta visualização o usuário pode ver os documentos mais relevantes resultantes da consulta, bem como um mapa que identifica regiões do espaço visual contendo mais documentos que poderão ser explorados.
 
 Os documentos mais relevantes são mostrados como discos cujo raio determina a sua relevância. Os demais documentos (aqueles que formam o mapa) podem ser vistos como pontos no espaço visual. A posição de cada documento é dada por uma projeção multidimensional. Pontos no mapa poderão ser explorados interativamente por um zoom de conteúdo, o qual gera uma nova visualização.
 
+O lado cliente oferece uma GUI (Interface Gráfica do Usuário) da aplicação com uma região na qual será exibida a visualização, com controles que permitam especificar consultas (por: palavras-chave, título, nome de autor, período, entre outros). A GUI permite interação com a visualização, na qual podem ser selecionados documentos a fim de obtê-los na íntegra ou visualizar suas propriedades, além de ser possível verificar o relacionamento entre os documentos e fazer um zoom para visualizar os documentos menos relevantes para determinada consulta.
 
-O lado cliente oferece uma GUI (Interface Gráfica do Usuário) da aplicação com uma região na qual será exibida a visualização, com controles que permitam especificar consultas (por: palavras-chave, título, nome de autor, período, entre outros). A GUI permite interação com a visualização, na qual podem ser selecionados documentos a fim de obtê-los na integra ou visualizar suas propriedades, além de ser possível verificar o relacionamento entre os documentos e fazer um zoom para visualizar os documentos menos relevantes para determinada consulta.
+A parte da aplicação lado cliente será desenvolvida utilizando uma biblioteca \textit{javaScript} para manipulação de documentos com base em dados a D3.js. A D3 (Data Driven Document) permite a criação de visualizações de dados usando uma abordagem simples (data driven), aproveitando os padrões web existentes \cite{zhu2013data}.
 
-. 
-
-A parte da aplicação lado cliente será desenvolvida utilizando uma biblioteca javaScript para manipulação de documentos com base em dados a D3.js. A D3 (Data Driven Document) permite a criação de visualizações de dados usando uma abordagem simples (data driven), aproveitando os padrões web existentes \cite{zhu2013data}.
-
-O raqueamento dos documentos será realizado usando primeiramente o page rank...
-
-Para o ranqueamento de artigos cientificos será utilizada a quantia de citações que cada artigo tem e citações dos artigos que foram citam os mesmo baseado em informações provindas do Google Scholar.
+O raqueamento dos documentos será realizado usando primeiramente o \textit{page rank}.
  
-Como ranquear os documentos
-Artigos cientificos serão ranqueados a partir dos seguintes valores.
-número de citações do determinado artigo.
-número de citações de artigos que o citaram
+%Como ranquear os documentos
+%Artigos cientificos serão ranqueados a partir dos seguintes valores.
+%número de citações do determinado artigo.
+%número de citações de artigos que o citaram
 
+A relevância de um documento, pode ser calculado de várias maneiras diferentes, mas a computação da \textit{eigenpair} dominante de uma matriz estocástica é um dos métodos mais comuns. No sistema proposto, quando os documentos estão ligados de acordo com alguma relação, como por exemplo, citações ou links, a relevância de cada documento é dado pela solução do problema eigenvector Mx = x, onde cada coluna de M corresponde a um documento e uma entrada Mij é diferente de zero quando o documento é i ligação para o documento j, nesse caso, Mij = 1 = outdeg (I). Quando a coleção de documentos tem nenhuma informação do link, a relevância é calculada a partir da knearest vizinhos (KNN) gráfico \cite{pagliosa2013mist}.
 
+\section{Testes com Usuário}
 
 Os testes com usuários serão realizados seguindo..
 
 
-A relevância do documento pode ser calculada de várias maneiras,... 
 
-A relevância de um documento, a recolha pode ser calculado de várias maneiras diferentes, mas a computação da \textit{eigenpair} dominante de uma matriz estocástica é um dos métodos mais comuns. No sistema proposto, quando os documentos estão ligados de acordo com alguma relação, como por exemplo, citações ou links, a relevância de cada documento é dado pela solução do problema eigenvector Mx = x, onde cada coluna de M corresponde a um documento e uma entrada Mij é diferente de zero quando o documento é i ligação para o documento j, nesse caso, Mij = 1 = outdeg (I). Quando a coleção de documentos tem nenhuma informação do link, a relevância é calculada a partir da knearest vizinhos (KNN) gráfico.
+
+
+
