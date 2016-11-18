@@ -61,11 +61,11 @@ Técnicas lineares podem deixar de captar os padrões relevantes de dados com es
 
 Uma técnica de projeção multidimensional tipicamente mapeia os dados para um espaço com d dimenções, com d = {1,2,3}, continuando a manter no espaço projetando alguma informação sobre a relação de distância entre os itens de dados em seu espaço de definição original. Utilizando representações gráficas unidas com a capacidade visual humana de reconhecimento de padrões com base na similaridade de grupos de elementos \cite{paulovich2008least}.
 
-A maioria das técnicas  que chamam a sua visualização a partir de dados extraídos de documentos (tais como citação, cocitação, de autoria, e palavras-chave) \cite{vaz2004visualizacao}. Projeções bem construídas podem ser usadas para exibir a estrutura global, subjacente ou tendências locais de uma coleção de documentos através da organização de semelhança em conteúdo com as regiões vizinhas no mapa. Conjuntos de dados textuais se tornam representações vetoriais com alta dimensionalidade e dispersão, tornando a aplicação particularmente difícil de ser processada com algumas técnicas de visualização. 
+A maioria das técnicas  que chamam a sua visualização a partir de dados extraídos de documentos (tais como citação, cocitação, de autoria, e palavras-chave) \cite{vaz2004visualizacao}. Projeções bem construídas podem ser usadas para exibir a estrutura global, subjacente ou tendências locais de uma coleção de documentos através da organização de semelhança de conteúdo com as regiões vizinhas no mapa. Conjuntos de dados textuais se tornam representações vetoriais com alta dimensionalidade e dispersão, tornando a aplicação particularmente difícil de ser processada com algumas técnicas de visualização \cite{ward2015interactive}. 
 Técnicas construídas para processar coleções de documentos extremamente grandes perdem muita informação quando procuram escalabilidade. Técnicas mais precisas são úteis para aplicações onde os usuários têm como objetivo examinar uma grande quantidade de documentos, mas o processamento é mais lento, mesmo para conjuntos de dados de tamanhos moderado \cite{ward2015interactive}.
 
 
-Paulovich et. al. \cite{paulovich2008least} formalizam o conceito de projeções multidimensionais baseadas na distância, como $x={x_{1}, x_{2},...,x_{n}}$ como um conjunto de dados m-dimensional, com $\delta (x_{i},x_{j})$ sendo uma medida (distância) de dissimilaridade entre duas intâncias m-dimensionais de dados, e tendo $Y=(y_{1},y_{2},...,y_{n})$ como um conjunto de pontos em um espaço d-dimensional, com $d=\{1,2,3\}$ e $d=(y_{i},y_{j})$ sendo a distância (euclidiana) entre dois pontos do espaço projetado. Uma técnica de projeção multidimensional pode ser descrito como uma função injetiva $f : X\rightarrow Y$ que procura fazer $|\delta (x_{i}, x_{j})-d(f(x_{i}),f(x_{j})|$ o mais próximo possível de zero.
+Paulovich et. al. \cite{paulovich2008least} formalizam o conceito de projeções multidimensionais baseadas na distância, como $x={x_{1}, x_{2},...,x_{n}}$ sendo um conjunto de dados m-dimensional, com $\delta (x_{i},x_{j})$ sendo uma medida (distância) de dissimilaridade entre duas intâncias m-dimensionais de dados, e tendo $Y=(y_{1},y_{2},...,y_{n})$ como um conjunto de pontos em um espaço d-dimensional, com $d=\{1,2,3\}$ e $d=(y_{i},y_{j})$ sendo a distância (euclidiana) entre dois pontos do espaço projetado. Uma técnica de projeção multidimensional pode ser descrito como uma função injetiva $f : X\rightarrow Y$ que procura fazer $|\delta (x_{i}, x_{j})-d(f(x_{i}),f(x_{j})|$ o mais próximo possível de zero.
 
 \section{Visualização Multidimensional na Web}
 
@@ -125,6 +125,7 @@ No processo de desenvolvimento, além da visualização representar o conjunto d
 \label{Projecoes-multidimensionais-sec}
 
 
+
 \section{Controles da interação}
 
 Para que o usuário possa acessar as informações de maneira mais prática é preciso alguns mecanismos de controle de interação, como escolher o tipo de visualização, localização e nível de cada interação navegando dentro dos dados e da visualização. Controles devem ser intuitivos sem ambiguidades e com nível de detalhamento e precisão adequadas para o espaço em que estão sendo operados\cite{ward2015interactive}. 
@@ -137,7 +138,7 @@ Para que o usuário possa acessar as informações de maneira mais prática é p
 
 \section{Técnicas de Ranqueamento}
 
-Existem várias tecnicas que são utilizadas para rankear documentos, neste projeto será usado o \textit{PageRank} que é um algorítmo de ranqueamento comumente utilizado para ranqueamento de páginas \textit{web}. Ele explora a estrutura do hipertexto de uma página para representar associações e a partir daí quantificar e propagar a importância de determinado página pela web \cite{langville2011google}.
+Existem várias técnicas que são utilizadas para rankear documentos, neste projeto será usado o \textit{PageRank} que é um algorítmo de ranqueamento comumente utilizado para ranqueamento de páginas \textit{web}. Ele explora a estrutura do hipertexto de uma página para representar associações e a partir daí quantificar e propagar a importância de determinado página pela web \cite{langville2011google}.
 O algorítmo faz a exploração da seguinte maneira: Uma página A que possui um \textit{link}, ou referência, para uma página B, é contado como um ponto para a página B. Entretanto, não apenas essa informação é levada em consideração, mas também a pontuação ou importância das páginas que referenciaram B, neste caso, o escore da página A influência no escore da página B \cite{de2006mecanismos}. 
 Para documentos, será aplicado o mesmo fundamento, se um documento X referencia um documento Y este documento tem um ponto, cada referência a mais soma-se mais pontos, além disso o número citações do artigo X influência na relevância do artigo Y, no final quanto maior a pontuação do artigo maior será a sua relevância em relação aos documentos na base, ilustrado pela \ref{pagerankfig}
 
@@ -160,10 +161,9 @@ Nesta seção será apresento um estudo das tecnologias principais que serão us
 Aplicações desenvolvidas para Web comumente são divididas em duas partes principais, o lado servidor e um lado cliente cada um com as suas caracteristicas especificas. O lado servidor é encarregado pelo recebimento e processamento de solicitações provindas do lado cliente, e são enviadas através de um navegador Web. 
 Em resposta ao processamento efetuado pelo servidor é gerada uma página Web, que é enviada novamente ao cliente e exibida no navegador.  Nesta página podem ser exibidos textos, imagens, \textit{links}, controles entre outros de acordo com a finalidade da aplicação definidos por elementos descritos em HTML (\textit{Hypertext Markup Language}), que está em sua quinta versão o HTML5. Junto com o HTML pode ser usado o CSS (Cascate Style Sheets) para definir a aparência da página que define propriedades como localização, cor, estilo, entre outras\cite{pagliosa2016visualizaccao}.
 
-Uma aplicação HTML organiza os elementos em um navegador com um padrão de
-Os elementos de uma aplicação em HTML são organizados em um navegador baseados em DOM utilizando XML (eXtensible Markup Language). Os programas podem ser escritos em \textit{JavaScript} e embutidos ou mantidos em arquivos separados e incluídos na própria página \cite{wang2013definitive} \cite{pagliosa2016visualizaccao}.
+Uma aplicação HTML organiza os elementos em um navegador com um padrão Web definido pela W3C (\textit{World Wide Web Consortioum}) o DOM utilizando XML (eXtensible Markup Language). Os programas podem ser escritos em \textit{JavaScript} e embutidos ou mantidos em arquivos separados e incluídos na própria página \cite{wang2013definitive} \cite{pagliosa2016visualizaccao}.
 
-\textit{JavaScript} é considerada a linguagem dos navegadores modernos. Programas em \textit{JavaScript} podem ser executados na maioria dos computadores, pois, eles normalmente já vêm com algum navegador instalado, independentemente do sistema operacional utilizado. Similarmente, todos os navegadores atuais podem renderizar SVG (Scalable Vector Grafics), uma linguagem derivada do XML, de descrição vetorial de gráficos bidimensionais. A combinação de JavaScript e SVG permite a criação de gráficos sofisticados, acessíveis à maioria dos usuários da internet. Essa combinação pode ser feita utilizando a biblioteca D3 \cite{pagliosa2016visualizaccao}.
+Programas em \textit{JavaScript} podem ja vem instalado nos navegadores o que falita o acesso em qualquer computador com um navegador Web atual, independentemente do sistema operacional utilizado. Os navegadores também podem rederizar utilizando SVG (Scalable Vector Grafics), que faz a descrição vetorial de gráficos bidimensionais. A combinação de JavaScript e SVG permite a criação de gráficos sofisticados, acessíveis à maioria dos usuários da internet. Essa combinação pode ser feita utilizando a biblioteca D3 \cite{pagliosa2016visualizaccao}.
 
 	
 \subsection{D3}
@@ -184,17 +184,19 @@ D3 (Data Driven Document) é uma biblioteca para manipulação de documentos com
 
 \subsection{JavaServer Faces (JSF)}
 
-JavaServer Faces (JSF) é uma especificação Java para a construção de interfaces de usuário baseadas em componentes para aplicativos da Web. Foi formalizado como um padrão através do Java Community Process e é parte da Plataforma Java Enterprise Edition. A tecnologia JavaServer Faces estabelece o padrão para a criação de interfaces de usuário do lado do servidor \cite{mann2013java}.
+JavaServer Faces (JSF) \cite{burns2010javaserver} \cite{mann2013java} é uma tecnologia para desenvolvimento web que utiliza um modelo de interfaces gráficas baseado em eventos.  Foi formalizado como um padrão através do Java Community Process e é parte da Plataforma Java.  É baseado no padrão de projeto MVC (Model-View-Controller) que separa a representação de informação da interação do usuário em três partes modelo, visão e controlador.  A arquitetura de componentes do JSF define um padrão para criação de ferramentas (\textit{widgets}) de interface de usuário (UI). Os componentes são orientados a eventos, portanto o JSF permite processar eventos gerados pelo cliente (por exemplo, alterando o valor de uma caixa de texto ou clicando em um botão) que serão renderizados e exibidos em formato HTML \cite{geary2012core}.
 
-....escrever mais
+Além disso, o JSF considera capacidades de internacionalização, \textit{templating}, acessibilidade, navegação, Ajax, entre outras. É de alto nível, pelo que o modelo HTTP,  	servlets e outros conceitos da página são implícitos. O estado dos componentes é sempre guardado automaticamente, criando a característica \textit{Stateful}. Isso permite por exemplo, criar formulários de várias páginas e navegar  por várias páginas dele com o estado das telas sendo mantidos\cite{geary2012core}.
 
-\cite{burns2010javaserver}
+O JSF ainda tem a vantagem de ser uma especificação do Java EE, isto é, todo servidor de aplicações Java tem que vir com uma implementação dela e há diversas outras disponíveis \cite{geary2012core}.
+
+
 
 \subsection{jQuery}
 
 Outra biblioteca que sera usada é a \textit{jQuery} uma biblioteca \textit{JavaScript} rápida, pequena e rica em recursos capaz de adicionar interatividade e dinamismo às páginas web com objetivo de fazer isso de forma simplificada \cite{bibeault2008jquery}. Ela é multi plataforma e \textit{open source}\cite{bibeault2008jquery}, foi criada dentro dos padrões Web estipulados pela W3C  (\textit{World Wide Web Consortium}), e é compatível com qualquer navegador de internet.
 
-jQuery, em sua essência, é uma biblioteca de manipulação de \textit{Document Object Model} (DOM) \cite{duckett2014web}. O DOM é uma representação em árvore-estrutura de todos os elementos de uma página Web e o jQuery simplifica a sintaxe para encontrar, selecionar e manipular esses elementos DOM \cite{bibeault2008jquery}. O jQuery também fornece recursos para os desenvolvedores criarem \textit{plug-ins }sobre a\textit{ JavaScript} \cite{duckett2014web}. Isso permite aos desenvolvedores criar abstrações para interações de baixo nível, animação, efeitos avançados de alto nível, e \textit{widgets} personalizáveis. A abordagem modular para a biblioteca jQuery permite a criação de poderosas páginas web dinâmicas e aplicativos Web.
+jQuery, em sua essência, é uma biblioteca de manipulação de \textit{Document Object Model} (DOM) \cite{duckett2014web}. O DOM é uma representação em estrutura de árvore de todos os elementos de uma página Web e o jQuery simplifica a sintaxe para encontrar, selecionar e manipular esses elementos DOM \cite{bibeault2008jquery}. O jQuery também fornece recursos para os desenvolvedores criarem \textit{plug-ins }sobre a\textit{ JavaScript} \cite{duckett2014web}. Isso permite aos desenvolvedores criar abstrações para interações de baixo nível, animação, efeitos avançados de alto nível, e \textit{widgets} personalizáveis. A abordagem modular para a biblioteca jQuery permite a criação de poderosas páginas web dinâmicas e aplicativos Web.
 
 
 \section{Testes com usuário}
@@ -204,52 +206,38 @@ Realizar testes com usuarios é uma tarefa essencial para se ter um  real clarez
 Junto com esses fatores existe outro problema \cite{ward2015interactive} comum que muitas vezes é evitado pelos desenvolvedores de técnicas de visualização que é determinar em que condições sua técnica é melhor do que as outras técnicas existentes ou se uma modificação feita a um método particular melhora ou piora algum aspecto da técnica ou do sistema e muitas vezes ocorre do desenvolvedor criar métodos diferentes dos já desenvolvidos, podendo não ser englobado nos padrões de avaliação estudados.
 Ward et. al. \cite{ward2015interactive}  identificam alguns dos componentes e procedimentos necessários para avaliar e comparar a eficácia das técnicas de visualização divididos em partes como tarefas do usuario, caracteristicas dos dados e caracteristicas da visualização.
 
-% * <eeddeerr@gmail.com> 2016-11-13T17:46:35.635Z:
-%
-% continuar....partes como...
-%
-% ^.
-
 Para realizar uma avaliação primeiramente devem ser identificadas as ações ou tarefas especificas que se deseja realizar e alguns fatores em relação as ações que o usuário pode executar com a ferramenta de visualização.
 
+\subsection{Características do Usuário}
 
-%Primeiro, listamos os tipos de tarefas que um usuário pode desejar realizar com a ajuda da visualização, como identificar tendências ou detectar a presença de um fenômeno conhecido. Definimos então as características do usuário, como o nível de experiência, que podem afetar o sucesso de uma técnica de visualização. Em seguida, revisamos as características dos dados, como apresentado no Capítulo 2, e examinamos como essas características se referem ao processo de visualização efetiva. Finalmente, descrevemos atributos das visualizações em si, como a presença ou ausência de oclusão, que precisam ser considerados na avaliação. Para concluir o capítulo, descrevemos um procedimento para projetar um processo de benchmark que permitiria a uma pessoa encarregada de comparar duas ou mais técnicas de visualização abordar o problema de maneira metódica.
+A efetividade da técnica de visualização é fortemente associada as características do usuário, pois, dependendo do grau de conhecimento ou habilidades na área ou em relação a técnica utilizada pode-se ter uma abstração diferente de outro usuário que não tem as mesmas características. Alguns dos aspectos particulares de interesse incluem a familiaridade com o domínio, com a tarefa, com os dados, com a técnica de visualização, e com o ambiente de visualização.
 
-\subsection{Características dos dados}
+\textbf{Familiaridade com o domínio} condiz com experiência que o usuário tem com o domínio dos dados que estão sendo explorados, se ele já tem conhecimento do área e a quanto tempo.
+\textbf{Familiaridade com a tarefa}, mostrando qual a experiência que o usuário teve na realização da tarefa desejada.
+\textbf{Familiaridade com os dados}, no qual deve ser invetigado se o usuário já examinou esses dados anteriormente e formou um modelo mental razoável de seu conteúdo, ou é esta sua primeira exposição a ele, e se o conjunto de dados a ser analizado é semelhante a outros que o usuário ja viu.
+\textbf{Familiaridade com a técnica de visualização}, que trata o nivel de experiência que o usuário tem com a determinada técnica e o tempo demandado utilizam-do-a.
+\textbf{Familiaridade com o ambiente de visualização}, se o usuário ja utilizou a ferramenta que está sendo analizada \cite{ward2015interactive}.
+
+\subsection{Características dos Dados}
 
 Dados têm um grande número de características e, portanto, avaliar completamente uma ou mais visualizações para um dado domínio pode potencialmente envolver a coleta ou geração de um grande número de conjuntos de dados de teste. Em muitos domínios, contudo, algumas destas características são razoavelmente limitadas, o que pode reduzir grandemente o número de testes distintos que são necessários \cite{ward2015interactive}. As características dos dados visualizados podem ter uma profunda influência sobre a eficácia da técnica de visualização e devem ser consideradas no processo de avaliação. Para se ter uma avaliação ideal devem ser testadas uma grande variedade de conjuntos de dados , e eles devem abranger a gama de características encontradas no domínio para o qual a visualização está sendo projetada. Os testes conforme \cite{ward2015interactive} devem incluir: O tipo do dado, tamanho, dimensionalidade, número de parâmetos, estrutura, variação, distribuição, e se os dados são reais ou sintéticos.
 
 
 \subsection{Características da Visualização}
 
-Além dos aspectos descritos devem ser analizadas outras características da visualização como: 
-Desempenho computacional,  que diz com que rapidez a visualização pode ser gerada, usando conjuntos de dados de vários tamanhos.
+Além das outras caracteristicas que devem ser analizadas existem algumas em particular da visualização que devem ser analizadas, Ward et. al. enfatizam algumas delas que são elas \cite{ward2015interactive}: 
+Desempenho computacional,  que diz respeito sobre a velocidade de geração da visualização, usando conjuntos de dados de vários tamanhos, desempenho da memória
 
-%Memória de desempenho. Quanta memória do computador é necessária para gerar a visualização?
+Limitações dos dados, que trata sobre a complexidade do dado do dado que pode ser visualizado com a determinada técnica, em que ponto a quantidade de informação extraível da visualização estabiliza ou diminui com o aumento do tamanho/complexidade dos dados, e em que ponto a taxa de erro para executar a tarefa aumenta para nível inaceitável \cite{ward2015interactive}. 
 
-%Limitações dos dados. Quais são os limites superior e inferior para o tamanho e complexidade dos dados que podem ser visualizados com esta técnica? em que ponto a quantidade de informação extraível da visualização estabiliza ou diminui com o aumento do tamanho / complexidade dos dados? em Em que ponto a taxa de erro para executar a tarefa aumenta para nível inaceitável?
+Grau de oclusão, mostrando qual a probabilidade de que algum subconjunto dos dados ser exibido ou ser oculto por outras partes da visualização, Como Muito normalmente é ocluído e quantas visualizações o usuário precisa para Ver todo o conjunto de dados \cite{ward2015interactive}.
 
-%Grau de oclusão. Qual é a probabilidade de que algum subconjunto dos dados será exibido ou será oculto por outras partes da visualização? Como Muito normalmente é ocluído? Quantas visualizações o usuário precisa para Ver todo o conjunto de dados?
+Grau de complexidade, onde devem ser analizados o grau de aprendizado normal para a técnica, quantos parâmetros o usuário precisa definir para gerar visualizações e quanto conhecimento é necessário para definir e ajustar parâmetros de uma forma eficaz \cite{ward2015interactive}.
 
-%Grau de complexidade. Qual é a curva de aprendizado normal para a técnica? Quantos parâmetros o usuário precisa definir para gerar visualizações? Quanto conhecimento é necessário para definir e ajustar Parâmetros de uma forma eficaz?
+Grau de usabilidade, que condiz com o qual o grau de dificuldade de execução da tarefa, se a visualização e os controles são intuitivos ou não \cite{ward2015interactive}.
 
-%Grau de usabilidade. Como é fácil para executar a tarefa? Como é intuitivo o Interpretação da visualização? Quão intuitivos são os controles Interações?
+Grau de precisão, com que freqüência o usuário obtém êxito ou não consegue executar o que desejada com determinada técnica, em que condições os erros são cometidos e quão ruins são os erros (ou seja, a Correção) \cite{ward2015interactive}.
 
-%Grau de precisão. Com que freqüência o usuário obtém êxito ou não consegue executar a desejada com esta técnica? Em que condições os erros são cometidos e quão ruins são os erros (ou seja, a Correção)?
-
-
-
-% fazer uma ponte de todos os assuntos. E buscar o que o autor esta dizendo no capitulo 3 
-%No Capítulo 3 discutimos muitos dos atributos dos dados, dos tipos dos componentes de nível mais baixo à sua estrutura. As características dos dados visualizados podem ter uma profunda influência sobre a eficácia da técnica de visualização e devem ser consideradas no processo de avaliação. Em uma avaliação ideal, uma grande variedade de conjuntos de dados deve ser testada, e eles devem abranger a gama de características encontradas no domínio para o qual a visualização está sendo projetada. Alguns destes testes devem incluir: Tipo. Em muitos casos, os dados são todos do mesmo tipo (por exemplo, números de ponto flutuante). Muitas vezes, no entanto, é uma mistura de tipos, como o texto entremeado com números. Todas as combinações de tipos que podem ocorrer devem ser testadas.
-%Tamanho. Conjuntos de dados em um determinado domínio pode muitas vezes assumir uma ampla gama de tamanhos, a partir de alguns registros para milhares ou milhões de registros. Os testes devem abranger a faixa de tamanho normal, bem como valores extremos para o tamanho.
-%Dimensionalidade. Enquanto em muitos domínios científicos os dados geralmente têm dimensionalidade fixa (um, dois ou três), é geralmente útil testar uma visualização com todos os possíveis subconjuntos de dimensões (fatias ou projeções), bem como, com a dimensionalidade normal.
-%Número de parâmetros. O número normal de parâmetros em um conjunto de dados varia muito de um domínio para outro. As técnicas de visualização devem ser testadas com conjuntos de dados univariados e multivariados (a menos que existam apenas dados univariados); De fato, um teste comum é determinar o número máximo de parâmetros que podem ser efetivamente exibidos por uma técnica.
-%Estrutura. Num conjunto de dados, a estrutura dos dados pode ser simples (por exemplo, uma
-%Grade uniforme ou uma tabela) ou complexo (por exemplo, hierárquico). Enquanto muitos domínios usam uma única estrutura fixa (definida pelo modelo de dados), outros podem permitir múltiplas estruturas fixas ou estruturas variáveis. As estruturas secundárias também podem ser derivadas das estruturas principais, como uma hierarquia de agrupamento derivada de uma lista ou de uma grade multinível. As técnicas de visualização devem ser testadas usando todas as estruturas comumente encontradas dentro do domínio.
-%Alcance. Objetos em conjuntos de dados podem assumir uma ampla gama de valores. O teste deve envolver o exercício de toda a gama de valores possíveis, incluindo os extremos da gama.
-%Distribuição. Os dados podem ser uniformemente ou não uniformemente distribuídos, tanto em valores quanto em atributos (como a posição espaço-temporal). Os testes devem envolver conjuntos de dados que incluem distribuições normalmente encontradas no domínio, bem como alguns casos extremos.
-%Real vs. Sintético. Muitos pesquisadores realizam avaliações usando dados sintéticos, pois permite controle rigoroso das características dos dados. Para alguns tipos de avaliação (por exemplo, testes de tamanho) isso é bom, mas em geral é mais convincente usar dados reais que tenham as características de dados típicos encontrados em um domínio específico.
-%Como pode ser visto nesta seção, os dados têm um grande número de características e, portanto, avaliar completamente uma ou mais visualizações para um dado domínio pode potencialmente envolver a coleta ou geração de um grande número de conjuntos de dados de teste. Em muitos domínios, contudo, algumas destas características são razoavelmente limitadas, o que pode reduzir grandemente o número de testes distintos que são necessários. Poucos domínios fizeram esforços concertados para reunir grandes quantidades de conjuntos de dados para testes (exemplos agradáveis incluem o arquivo de aprendizado de máquina na Universidade da Califórnia, em Irvine [430] e no repositório StatLib na CMU [394]), e menos ainda tentaram Classificar conjuntos de dados de acordo com suas características para permitir testadores para avaliar os atributos de dados que devem ser testados com os conjuntos de dados. Seria um ótimo serviço, tanto para os pesquisadores em um determinado domínio como para os desenvolvedores de visualização, para esses arquivos anotados ficarem mais disponíveis.
 
 \section{Trabalhos Relacionados}
 \label{Trab_Relac}
@@ -313,7 +301,7 @@ O \textit{WordTree} \cite{wattenberg2008word} é um exemplo do uso desta técnic
 Uma análise linguística mais sofisticada é aplicada pelo \textit{DocuBurst} \cite{collins2009docuburst}, ele faz uso de uma base de dados léxica eletrônica e um \textit{layout} de árvore com preenchimento radial no espaço para visualizar o conteúdo do documento de uma forma léxica. Keim e Oelke \cite{keim2007literature} desenvolveram um método que emprega regras semânticas para segmentar um documento em blocos e funções de palavras para mapear os blocos em vetores de características. O principal componente de cada recurso do vetor é usado para colorir os blocos, resultando em uma imagem como uma impressão digital do documento. Em contraste com os outros métodos  baseados em linguística acima descritos, o método de Keim e Oelke \cite{keim2007literature} permite identificar e comparar os documentos específicos no conjunto de dados, mas, comprometem a legibilidade do seu conteúdo.
 
 
-Joia, Pretonetto e Nonato \cite{joia2015uncovering} propõe uma técnica de visualização multidimensional com projeção que se baseia em exemplos representativos para definir agrupamentos no espaço visual. Exemplos representativos são selecionados por um sistema de amostragem determinista derivada da decomposição da matriz que é sensível à variabilidade de dados capaz de lidar com as classes com um pequeno número de casos. Além disso, o mecanismo de amostragem pode facilmente ser adaptado para selecionar atributos relevantes de cada agrupamento.
+Joia, Pretonetto e Nonato \cite{joia2015uncovering} propõem uma técnica de visualização multidimensional com projeção que se baseia em exemplos representativos para definir agrupamentos no espaço visual. Exemplos representativos são selecionados por um sistema de amostragem determinista derivada da decomposição da matriz que é sensível à variabilidade de dados capaz de lidar com as classes com um pequeno número de casos. Além disso, o mecanismo de amostragem pode facilmente ser adaptado para selecionar atributos relevantes de cada agrupamento.
 
 Um mecanismo muito eficiente para visualizar variações temáticas de coleções de documentos em uma linha do tempo são as metáforas de rio (\textit{River Metaphor}). Com essas metáforas pode-se visualizar variações nos estilos comparando com outros documentos através de uma linha do tempo oriundas de eventos externos. Introduzido inicialmente pelo sistema \textit{ThemeRiver} \cite{havre2002themeriver}, as metáforas foram melhoradas com mecanismos sofisticados para fazer a derivação em relação aos tópicos de detecção de tempo \cite{liu2012tiara} e visualizações em camadas capazes de descrever o nascimento, morte e divisão de classes de eventos \cite{cui2011textflow}. 
 
